@@ -21,7 +21,7 @@ from VGGNetLayer5 import VGGNetLayer5
 from VGGNetLayerFC import VGGNetLayerFC
 
 
-imagefolder = "images"
+imagefolder = "/kaggle/input/vinbigdata-resized/vinbigdata_224x224/train/"
 resultfolder = "."
 
 mean = np.array([103.939, 116.779, 123.68])
@@ -72,7 +72,7 @@ mask = 0.75*np.abs(mask-1)+0.25
 
 total_time = 0
 for item in file_names:
-	print item
+	print(item)
 	
 	img_org = cv.imread(imagefolder+"/"+item)	
 	img = np.float32(img_org)
@@ -120,7 +120,7 @@ for item in file_names:
 	h.grad[h.grad<0] = 0
 	bpl3 = h.grad.copy()
 	
-	filterSize = 11;
+	filterSize = 11
 	size_img_org = img_org.shape
 	
 	lfc = cv.resize((h5.data*bpfc)[0].transpose((1,2,0)),(224,224))
